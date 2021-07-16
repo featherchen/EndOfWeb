@@ -17,8 +17,8 @@ git remote add upstream https://github.com/NTUEE-PLUS/EndOfWeb.git
 git remote set-url --push upstream no_push
 git remote -v //check
 ```
-
-## Step 3 Go to [Jira](https://ntueeplus.atlassian.net/jira/software/c/projects/NTUEEPLUS/issues/)to find/create an issue
+![image](screenshot/remote-v.png)
+## Step 3 Go to [Jira](https://ntueeplus.atlassian.net/jira/software/c/projects/NTUEEPLUS/issues/) to find/create an issue
 
 ## Step 4 Create a local branch for contribution
 
@@ -45,7 +45,7 @@ Coding on branch NTUEEPLUS-${jira_number}.
 ```
 git add ${edited files}
 git commit -m {commit message}
-//please be clear and  use git rebase -i to squash commit if too many commits.(like more than 10).
+#please be clear and  use git rebase -i to squash commit if too many commits.(like more than 10).
 ```
 
 ## Step 6 Push
