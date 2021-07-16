@@ -2,7 +2,7 @@ Follow Fork & Pull model
 
 ## Step1 Fork(first time)
 
-Fork repo : [EndOdWeb](https://github.com/NTUEE-PLUS/EndOfWeb.git)
+Fork repo : [EndOfWeb](https://github.com/NTUEE-PLUS/EndOfWeb.git)
 
 ## Step 2 Clone to local
 
