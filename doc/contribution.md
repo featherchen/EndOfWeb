@@ -1,8 +1,8 @@
 Follow Fork & Pull model
 
-## Step1 Folk(first time)
+## Step1 Fork(first time)
 
-Folk repo : [EndOdWeb](https://github.com/NTUEE-PLUS/EndOfWeb.git)
+Fork repo : [EndOdWeb](https://github.com/NTUEE-PLUS/EndOfWeb.git)
 
 ## Step 2 Clone to local
 
