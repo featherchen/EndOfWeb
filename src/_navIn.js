@@ -86,6 +86,12 @@ const _navIn = [
         anchor: 'Error 500',
         to: '/500',
       },
+      {
+        _component: 'CNavItem',
+        as: NavLink,
+        anchor: 'Profile',
+        to: '/profile',
+      },
     ],
   },
 ]
