@@ -14,7 +14,7 @@ import {
   CRow,
 } from '@coreui/react'
 
-const Profile = () => {
+const ProfileEdit = () => {
   const [data, setData] = useState({
     account: {
       show: true,
@@ -116,7 +116,7 @@ const Profile = () => {
               <a href="javascript:void(0)">User</a>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              User Profile
+              User Profile Edit
             </li>
           </ol>
         </nav>
@@ -126,18 +126,23 @@ const Profile = () => {
           <div className="col-md-4 mb-3">
             <div className="card">
               <div className="card-body">
-                <div className="d-flex flex-column align-items-center text-center">
+                <CInputGroup className="d-flex flex-column align-items-center text-center">
                   <img src={data.userimage} alt="Admin" className="rounded-circle" width="150" />
                   <div className="mt-3">
-                    <h4>{data.username.show ? data.username.data : ''}</h4>
-                    <p className="text-secondary mb-1">
-                      {data.profile.show ? data.profile.data : ''}
-                    </p>
-                    <p className="text-muted font-size-sm">{data.CC.show ? data.CC.data : ''}</p>
+                    <CFormControl placeholder={data.username.show ? data.username.data : ''} />
+                    <CFormControl
+                      className="text-secondary mb-1"
+                      placeholder={data.profile.show ? data.profile.data : ''}
+                    />
+
+                    <CFormControl
+                      className="text-muted font-size-sm"
+                      placeholder={data.CC.show ? data.CC.data : ''}
+                    />
                     <button className="btn btn-primary">Follow</button>
                     <button className="btn btn-outline-primary">Message</button>
                   </div>
-                </div>
+                </CInputGroup>
               </div>
             </div>
             <div className="card mt-3">
@@ -162,7 +167,10 @@ const Profile = () => {
                     </svg>
                     Website
                   </h6>
-                  <span className="text-secondary">{data.web.show ? data.web.data : ''}</span>
+                  <CFormControl
+                    className="text-secondary"
+                    placeholder={data.web.show ? data.web.data : ''}
+                  />
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 className="mb-0">
@@ -182,7 +190,7 @@ const Profile = () => {
                     </svg>
                     Github
                   </h6>
-                  <span className="text-secondary"> noidname01 </span>
+                  <CFormControl className="text-secondary" placeholder="noidname01" />
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 className="mb-0">
@@ -202,9 +210,10 @@ const Profile = () => {
                     </svg>
                     Linkedin
                   </h6>
-                  <span className="text-secondary">
-                    {data.Linkedin.show ? data.Linkedin.data : ''}
-                  </span>
+                  <CFormControl
+                    className="text-secondary"
+                    placeholder={data.Linkedin.show ? data.Linkedin.data : ''}
+                  />
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 className="mb-0">
@@ -226,7 +235,7 @@ const Profile = () => {
                     </svg>
                     Instagram
                   </h6>
-                  <span className="text-secondary">bootdey</span>
+                  <CFormControl className="text-secondary" placeholder="noidname01" />
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 className="mb-0">
@@ -246,9 +255,10 @@ const Profile = () => {
                     </svg>
                     Facebook
                   </h6>
-                  <span className="text-secondary">
-                    {data.facebook.show ? data.facebook.data : ''}
-                  </span>
+                  <CFormControl
+                    className="text-secondary"
+                    placeholder={data.facebook.show ? data.facebook.data : ''}
+                  />
                 </li>
               </ul>
             </div>
@@ -260,36 +270,40 @@ const Profile = () => {
                   <div className="col-sm-3">
                     <h6 className="mb-0">Nick Name</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">
-                    {data.nickname.show ? data.nickname.data : ''}
-                  </div>
+                  <CFormControl
+                    className="col-sm-9 text-secondary"
+                    placeholder={data.nickname.show ? data.nickname.data : ''}
+                  />
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
                     <h6 className="mb-0">Email</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">
-                    {data.publicEmail.show ? data.publicEmail.data : ''}
-                  </div>
+                  <CFormControl
+                    className="col-sm-9 text-secondary"
+                    placeholder={data.publicEmail.show ? data.publicEmail.data : ''}
+                  />
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
                     <h6 className="mb-0">Phone</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">
-                    {data.homephone.show ? data.homephone.data : ''}
-                  </div>
+                  <CFormControl
+                    className="col-sm-9 text-secondary"
+                    placeholder={data.homephone.show ? data.homephone.data : ''}
+                  />
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
                     <h6 className="mb-0">Mobile</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">
-                    {data.cellphone.show ? data.cellphone.data : ''}
-                  </div>
+                  <CFormControl
+                    className="col-sm-9 text-secondary"
+                    placeholder={data.cellphone.show ? data.cellphone.data : ''}
+                  />
                 </div>
                 <hr />
                 <div className="row">
@@ -299,7 +313,7 @@ const Profile = () => {
                       target="__blank"
                       href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills"
                     >
-                      Edit
+                      save
                     </a>
                   </div>
                 </div>
@@ -318,27 +332,30 @@ const Profile = () => {
                       <div className="col-sm-3">
                         <h6 className="mb-0">Bachelor</h6>
                       </div>
-                      <div className="col-sm-9 text-secondary">
-                        {data.education.major.show ? data.education.major.SD : ''}
-                      </div>
+                      <CFormControl
+                        className="col-sm-9 text-secondary"
+                        placeholder={data.education.major.show ? data.education.major.SD : ''}
+                      />
                     </div>
                     <hr />
                     <div className="row">
                       <div className="col-sm-3">
                         <h6 className="mb-0">Master</h6>
                       </div>
-                      <div className="col-sm-9 text-secondary">
-                        {data.education.master.show ? data.education.master.SD : ''}
-                      </div>
+                      <CFormControl
+                        className="col-sm-9 text-secondary"
+                        placeholder={data.education.master.show ? data.education.master.SD : ''}
+                      />
                     </div>
                     <hr />
                     <div className="row">
                       <div className="col-sm-3">
                         <h6 className="mb-0">Doctor</h6>
                       </div>
-                      <div className="col-sm-9 text-secondary">
-                        {data.education.doctor.show ? data.education.doctor.SD : ''}
-                      </div>
+                      <CFormControl
+                        className="col-sm-9 text-secondary"
+                        placeholder={data.education.doctor.show ? data.education.doctor.SD : ''}
+                      />
                     </div>
                     <hr />
                   </div>
@@ -355,27 +372,33 @@ const Profile = () => {
                       <div className="col-sm-4">
                         <h6 className="mb-0">Company</h6>
                       </div>
-                      <div className="col-sm-9 text-secondary">
-                        {data.Occupation[0].show ? data.Occupation[0].C : ''}
-                      </div>
+                      <CInputGroup className="col-sm-9 text-secondary">
+                        <CFormControl
+                          placeholder={data.Occupation[0].show ? data.Occupation[0].C : ''}
+                        />
+                      </CInputGroup>
                     </div>
                     <hr />
                     <div className="row">
                       <div className="col-sm-4">
                         <h6 className="mb-0">Department</h6>
                       </div>
-                      <div className="col-sm-9 text-secondary">
-                        {data.Occupation[0].show ? data.Occupation[0].O : ''}
-                      </div>
+                      <CInputGroup className="col-sm-9 text-secondary">
+                        <CFormControl
+                          placeholder={data.Occupation[0].show ? data.Occupation[0].O : ''}
+                        />
+                      </CInputGroup>
                     </div>
                     <hr />
                     <div className="row">
                       <div className="col-sm-4">
                         <h6 className="mb-0">Position</h6>
                       </div>
-                      <div className="col-sm-9 text-secondary">
-                        {data.Occupation[0].show ? data.Occupation[0].P : ''}
-                      </div>
+                      <CInputGroup className="col-sm-9 text-secondary">
+                        <CFormControl
+                          placeholder={data.Occupation[0].show ? data.Occupation[0].P : ''}
+                        />
+                      </CInputGroup>
                     </div>
                     <hr />
                   </div>
@@ -389,4 +412,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default ProfileEdit
