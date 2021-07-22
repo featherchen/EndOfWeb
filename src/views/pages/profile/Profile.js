@@ -1,5 +1,5 @@
 import React from 'react'
-import './profile.css'
+// import './profile.css'
 
 const Profile = () => {
   return (
@@ -27,15 +27,15 @@ const Profile = () => {
               <div className="card-body">
                 <div className="d-flex flex-column align-items-center text-center">
                   <img
-                    src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                    src="https://avatars.githubusercontent.com/u/55401762?v=4"
                     alt="Admin"
                     className="rounded-circle"
                     width="150"
                   />
                   <div className="mt-3">
-                    <h4>John Doe</h4>
-                    <p className="text-secondary mb-1">Full Stack Developer</p>
-                    <p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                    <h4>Tim Wang</h4>
+                    <p className="text-secondary mb-1">CTO and CEO</p>
+                    <p className="text-muted font-size-sm">Taipei, Taiwan</p>
                     <button className="btn btn-primary">Follow</button>
                     <button className="btn btn-outline-primary">Message</button>
                   </div>
@@ -84,7 +84,7 @@ const Profile = () => {
                     </svg>
                     Github
                   </h6>
-                  <span className="text-secondary">bootdey</span>
+                  <span className="text-secondary"> noidname01 </span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                   <h6 className="mb-0">
