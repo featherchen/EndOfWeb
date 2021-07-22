@@ -102,7 +102,21 @@ const ProfileEdit = () => {
     JobID: '', //有空去查一下mongoose的ref和populate
     userimage: 'https://avatars.githubusercontent.com/u/55401762?v=4', // not same as schema
   })
-
+  const [preImg, setPreImg] = useState(data.userimage)
+  const preViewImg = (e) => {
+    // console.log(e.target.files[0])
+    // console.log('X')
+    if (e) {
+      console.log('Y')
+      let fileReader = new FileReader()
+      fileReader.readAsDataURL(e.target.files[0])
+      fileReader.onloadend = () => {
+        setPreImg(fileReader.result)
+      }
+      // setPreImg(fileReader.result)
+      // console.log(fileReader)
+    }
+  }
   return (
     <div className="container">
       <div className="main-body">
@@ -127,7 +141,9 @@ const ProfileEdit = () => {
             <div className="card">
               <div className="card-body">
                 <CInputGroup className="d-flex flex-column align-items-center text-center">
-                  <img src={data.userimage} alt="Admin" className="rounded-circle" width="150" />
+                  <img src={preImg} alt="Admin" className="rounded-circle" width="150" />
+                  <CFormControl type="file" onChange={preViewImg} style={{ width: '100%' }} />
+                  <CRow></CRow>
                   <div className="mt-3">
                     <CFormControl placeholder={data.username.show ? data.username.data : ''} />
                     <CFormControl
