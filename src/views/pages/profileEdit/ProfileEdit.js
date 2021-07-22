@@ -143,7 +143,6 @@ const ProfileEdit = () => {
                 <CInputGroup className="d-flex flex-column align-items-center text-center">
                   <img src={preImg} alt="Admin" className="rounded-circle" width="150" />
                   <CFormControl type="file" onChange={preViewImg} style={{ width: '100%' }} />
-                  {/* <CRow></CRow> */}
                   <div className="mt-3">
                     <CFormControl placeholder={data.username.show ? data.username.data : ''} />
                     <CFormControl

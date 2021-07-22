@@ -40,14 +40,18 @@ class App extends Component {
               render={(props) => <Register {...props} />}
             />
             <Route exact path="/forget" name="Forget" render={(props) => <Forget {...props} />} />
+<<<<<<< HEAD
 
             <Route exact path="/profile" name="Profile Page" render={() => <Profile />} />
+=======
+>>>>>>> profile Edit
             <Route
               exact
               path="/profileEdit"
               name="Profile Edit Page"
               render={() => <ProfileEdit />}
             />
+            <Route exact path="/profile" name="Profile Page" render={() => <Profile />} />
             <Route exact path="/404" name="Page 404" render={(props) => <Page404 {...props} />} />
             <Route exact path="/500" name="Page 500" render={(props) => <Page500 {...props} />} />
             <Route path="/" name="Home" render={(props) => <DefaultLayout {...props} />} />
