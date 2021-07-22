@@ -2,12 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Title from './Title'
 import Resume from './Resume'
 import Testimonials from './Testimonials'
-<<<<<<< HEAD
 
-=======
-import './css/default.css'
-import './css/layout.css'
->>>>>>> settings
 // export default App;
 const Column = () => {
   const [data, setData] = useState([])
