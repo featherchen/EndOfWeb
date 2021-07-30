@@ -121,7 +121,8 @@ const Profile = () => {
   useEffect(() => {
     getRecruitment()
   }, [])
-
+  const EditRecruitment = () => {}
+  const DeleteRecruitment = () => {}
   const showRecruitment = (Recruitment) => {
     console.log(Recruitment)
     return Recruitment.posts.map((post, i) => {
@@ -129,9 +130,15 @@ const Profile = () => {
         <>
           <div className="row">
             <div className="col-sm-3">
-              <h6 className="mb-0">post {i}</h6>
+              <h6 className="mb-0">post {i + 1}</h6>
             </div>
-            <div className="col-sm-9 text-secondary">{post.title.title}</div>
+            <div className="col-sm-5 text-secondary">{post.title.title}</div>
+            <CButton className="col-sm-2" color="dark" onClick={EditRecruitment}>
+              Edit
+            </CButton>
+            <CButton className="col-sm-2" color="primary" onClick={DeleteRecruitment}>
+              Delete
+            </CButton>
           </div>
           <hr />
         </>
