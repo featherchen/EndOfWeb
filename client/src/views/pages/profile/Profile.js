@@ -13,6 +13,8 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { Link } from 'react-router-dom'
+import 'axios'
+import axios from 'axios'
 
 const Profile = () => {
   let recommendation = []
@@ -27,99 +29,57 @@ const Profile = () => {
       .then((res) => res.json())
       .then((data) => {
         setRecruitment(data)
-        console.log(data)
+        // console.log(data)
+      })
+  }
+  const getProfile = () => {
+    axios
+      .get('api/profile')
+      .then((res) => {
+        // console.log(data)
+        setData({ ...data, ...res.data })
+      })
+      .catch((err) => {
+        // console.log(err)
+        switch (err.response.status) {
+          case 404:
+            alert(err.response.data.description)
+            break
+          default:
+            alert(err.response.data.description)
+            break
+        }
       })
   }
   const [data, setData] = useState({
-    account: {
-      show: true,
-      data: 'B08901072',
-    },
-    username: {
-      show: true,
-      data: 'Tim Wang',
-    },
-    nickname: {
-      show: true,
-      data: '提姆',
-    },
-    profile: {
-      show: true,
-      data: '一人救全系', //自介
-    },
-    education: {
-      major: {
-        show: true,
-        SD: 'NTUEE', //school and department
-        Note: '', //一些備註，如：畢業、在學....
-      },
-      double_major: {
-        show: true,
-        SD: '', //school and department
-        Note: '', //一些備註，如：畢業、在學....
-      },
-      minor: {
-        show: true,
-        SD: '', //school and department
-        Note: '', //一些備註，如：畢業、在學....
-      },
-      master: {
-        show: true,
-        SD: '', //school and department
-        Note: '', //一些備註，如：畢業、在學....
-      },
-      doctor: {
-        show: true,
-        SD: '', //school and department
-        Note: '', //一些備註，如：畢業、在學....
-      },
-    },
-    publicEmail: {
-      show: true,
-      data: 'b08901072@ntu.edu.tw', //mongoose.SchemaTypes.Email ?
-    },
-    office: {
-      show: true,
-      data: '',
-    }, //phone
-    homephone: {
-      show: false,
-      data: '',
-    },
-    cellphone: {
-      show: true,
-      data: '0987654321',
-    },
-    CC: {
-      show: true,
-      data: 'Taipei, Taiwan',
-    }, //city+country
-    web: {
-      show: true,
-      data: '',
-    },
-    facebook: {
-      show: true,
-      data: 'https://www.facebook.com/noidname',
-    },
-    Linkedin: {
-      show: true,
-      data: '',
-    },
+    account: 'B08901072',
+    username: 'Tim Wang',
+    nickname: '提姆',
+    profile: '一人救全系', //自介
+    major: 'NTUEE',
+    double_major: '',
+    minor: '',
+    master: '',
+    doctor: '',
+    publicEmail: 'b08901072@ntu.edu.tw', //mongoose.SchemaTypes.Email ?
+    cellphone: '0987654321',
+    CC: 'Taipei, Taiwan', //city+country
+    web: '',
+    facebook: 'https://www.facebook.com/noidname',
+    Linkedin: '',
     Occupation: [
       {
-        show: true,
         O: '', //部門?
         P: 'CEO & CTO', //職稱?
         C: '友廷股份有限公司', //公司?
       },
     ],
-    JobID: '', //有空去查一下mongoose的ref和populate
     userimage: 'https://avatars.githubusercontent.com/u/55401762?v=4', // not same as schema
   })
 
   useEffect(() => {
     getRecruitment()
+    getProfile()
   }, [])
   const DeleteRecruitment = () => {}
   const showRecruitment = (Recruitment) => {
@@ -154,11 +114,9 @@ const Profile = () => {
               <div className="d-flex flex-column align-items-center text-center">
                 <img src={data.userimage} alt="Admin" className="rounded-circle" width="150" />
                 <div className="mt-3">
-                  <h4>{data.username.show ? data.username.data : ''}</h4>
-                  <p className="text-secondary mb-1">
-                    {data.profile.show ? data.profile.data : ''}
-                  </p>
-                  <p className="text-muted font-size-sm">{data.CC.show ? data.CC.data : ''}</p>
+                  <h4>{data.username}</h4>
+                  <p className="text-secondary mb-1">{data.profile}</p>
+                  <p className="text-muted font-size-sm">{data.CC}</p>
                   <CButton>Follow</CButton>
                   <CButton>Message</CButton>
                 </div>
@@ -174,7 +132,7 @@ const Profile = () => {
                   </CAvatar>
                   Website
                 </h6>
-                <span className="text-secondary">{data.web.show ? data.web.data : ''}</span>
+                <span className="text-secondary">{data.web.data}</span>
               </CListGroupItem>
               <CListGroupItem>
                 <h6 className="mb-0">
@@ -192,9 +150,7 @@ const Profile = () => {
                   </CAvatar>
                   Linkedin
                 </h6>
-                <span className="text-secondary">
-                  {data.Linkedin.show ? data.Linkedin.data : ''}
-                </span>
+                <span className="text-secondary">{data.Linkedin}</span>
               </CListGroupItem>
               <CListGroupItem>
                 <h6 className="mb-0">
@@ -212,9 +168,7 @@ const Profile = () => {
                   </CAvatar>
                   Facebook
                 </h6>
-                <span className="text-secondary">
-                  {data.facebook.show ? data.facebook.data : ''}
-                </span>
+                <span className="text-secondary">{data.facebook}</span>
               </CListGroupItem>
             </CListGroup>
           </CCard>
@@ -227,7 +181,7 @@ const Profile = () => {
                   <h6 className="mb-0">Nick Name</h6>
                 </CCol>
                 <CCol sm="9" className="text-secondary">
-                  {data.nickname.show ? data.nickname.data : ''}
+                  {data.nickname}
                 </CCol>
               </CRow>
               <hr />
@@ -236,16 +190,7 @@ const Profile = () => {
                   <h6 className="mb-0">Email</h6>
                 </CCol>
                 <CCol sm="9" className="text-secondary">
-                  {data.publicEmail.show ? data.publicEmail.data : ''}
-                </CCol>
-              </CRow>
-              <hr />
-              <CRow>
-                <CCol sm="3">
-                  <h6 className="mb-0">Phone</h6>
-                </CCol>
-                <CCol sm="9" className="text-secondary">
-                  {data.homephone.show ? data.homephone.data : ''}
+                  {data.publicEmail}
                 </CCol>
               </CRow>
               <hr />
@@ -254,7 +199,7 @@ const Profile = () => {
                   <h6 className="mb-0">Mobile</h6>
                 </CCol>
                 <CCol sm="9" className="text-secondary">
-                  {data.cellphone.show ? data.cellphone.data : ''}
+                  {data.cellphone.data}
                 </CCol>
               </CRow>
               <hr />
@@ -278,7 +223,7 @@ const Profile = () => {
                       <h6 className="mb-0">Bachelor</h6>
                     </CCol>
                     <CCol sm="9" className="text-secondary">
-                      {data.education.major.show ? data.education.major.SD : ''}
+                      {data.major}
                     </CCol>
                   </CRow>
                   <hr />
@@ -287,7 +232,7 @@ const Profile = () => {
                       <h6 className="mb-0">Master</h6>
                     </CCol>
                     <CCol sm="9" className="text-secondary">
-                      {data.education.master.show ? data.education.master.SD : ''}
+                      {data.master}
                     </CCol>
                   </CRow>
                   <hr />
@@ -296,7 +241,7 @@ const Profile = () => {
                       <h6 className="mb-0">Doctor</h6>
                     </CCol>
                     <CCol sm="9" className="text-secondary">
-                      {data.education.doctor.show ? data.education.doctor.SD : ''}
+                      {data.doctor}
                     </CCol>
                   </CRow>
                   <hr />
@@ -315,7 +260,7 @@ const Profile = () => {
                       <h6 className="mb-0">Company</h6>
                     </CCol>
                     <CCol sm="9" className="text-secondary">
-                      {data.Occupation[0].show ? data.Occupation[0].C : ''}
+                      {data.Occupation.length != 0 ? data.Occupation[0].C : ''}
                     </CCol>
                   </CRow>
                   <hr />
@@ -324,7 +269,7 @@ const Profile = () => {
                       <h6 className="mb-0">Department</h6>
                     </CCol>
                     <CCol sm="9" className="text-secondary">
-                      {data.Occupation[0].show ? data.Occupation[0].O : ''}
+                      {data.Occupation.length != 0 ? data.Occupation[0].O : ''}
                     </CCol>
                   </CRow>
                   <hr />
@@ -333,7 +278,7 @@ const Profile = () => {
                       <h6 className="mb-0">Position</h6>
                     </CCol>
                     <CCol sm="9" className="text-secondary">
-                      {data.Occupation[0].show ? data.Occupation[0].P : ''}
+                      {data.Occupation.length != 0 ? data.Occupation[0].P : ''}
                     </CCol>
                   </CRow>
                   <hr />
