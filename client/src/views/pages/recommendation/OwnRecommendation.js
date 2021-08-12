@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import RecruPost from './RecruPost'
+import RecomPost from './RecomPost'
 import axios from 'axios'
-const OwnRecruitment = () => {
+const OwnRecommendation = () => {
   const [data, setData] = useState([])
   const getData = () => {
     axios
-      .get('/api/recruitment')
+      .get('/api/recommendation/mine')
       .then((res) => {
         console.log('this is posts:', res.data)
         setData(res.data)
@@ -17,7 +17,7 @@ const OwnRecruitment = () => {
   useEffect(() => {
     getData()
   }, [])
-  return <div className="text-color-black">{data && <RecruPost data={data} />}</div>
+  return <div className="text-color-black">{data && <RecomPost data={data} />}</div>
 }
 
-export default OwnRecruitment
+export default OwnRecommendation
