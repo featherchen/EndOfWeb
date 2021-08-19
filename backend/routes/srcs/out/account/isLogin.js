@@ -1,5 +1,5 @@
 const { ErrorHandler } = require('../../../error')
-
+const Visual = require('../../../Schemas/user_visual_new')
 /**
  * @api {post} /isLogin isLogin
  * @apiName IsLogin
@@ -10,10 +10,11 @@ const { ErrorHandler } = require('../../../error')
  *
  * @apiError (403) {String} description "未登入"
  */
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
   const session_account = req.session.loginAccount
-  const session_userimage = req.session.userimage
-  if (session_account)
-    return res.status(200).send({ account: session_account, userimage: session_userimage })
-  else throw new ErrorHandler(403, '未登入')
+  if (session_account) {
+    const user = await Visual.findOne({ account: session_account })
+    if (!user) throw new ErrorHandler(404, 'profile不存在')
+    return res.status(200).send({ account: session_account, userimage: user.imgSrc })
+  } else throw new ErrorHandler(403, '未登入')
 }

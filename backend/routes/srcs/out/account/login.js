@@ -1,6 +1,5 @@
 //srcs/login.js
 const Login = require('../../../Schemas/user_login')
-const Visual = require('../../../Schemas/user_visual_new')
 const crypto = require('crypto')
 const { dbCatch, ErrorHandler } = require('../../../error')
 const asyncHandler = require('express-async-handler')
@@ -34,9 +33,6 @@ const login = async (req, res, next) => {
   const obj = await Login.findOne(query, 'userpsw username account').catch(dbCatch)
   if (!obj) throw new ErrorHandler(404, '帳號不存在')
   if (obj.userpsw !== newPsw) throw new ErrorHandler(401, '密碼錯誤')
-  const user = await Visual.findOne({ account: obj.account })
-  if (!user) throw new ErrorHandler(404, 'profile不存在')
-  req.session.userimage = user.imgSrc
   req.session.loginName = obj.username
   req.session.loginAccount = obj.account
   req.session.isAuth = obj.isAuth
