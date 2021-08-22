@@ -27,7 +27,11 @@ const asyncHandler = require('express-async-handler')
  * @apiError (500) {String} description 資料庫錯誤
  */
 module.exports = asyncHandler(async (req, res, next) => {
-  const { limit } = req.query
-  const recs = await Recruitment.find().limit(parseInt(limit)).catch(dbCatch)
+  const { number } = req.query
+  const limit = number ? parseInt(number) : 5
+  const totalNumber = parseInt(await Recruitment.count().catch(dbCatch))
+  const recs = await Recruitment.find()
+    .skip(totalNumber - limit)
+    .catch(dbCatch)
   return res.status(201).send({ data: recs.reverse().map((rec) => rec.getPublic()) })
 })

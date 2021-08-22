@@ -34,7 +34,11 @@ const { model: Column_Outline } = require('../../../Schemas/column_outline')
  * @apiError (500) {String} description 資料庫錯誤
  */
 module.exports = asyncHandler(async (req, res, next) => {
-  const { limit } = req.query
-  const columnOulines = await Column_Outline.find().limit(parseInt(limit)).catch(dbCatch)
+  const { number } = req.query
+  const limit = number ? parseInt(number) : 5
+  const totalNumber = parseInt(await Column_Outline.count().catch(dbCatch))
+  const columnOulines = await Column_Outline.find()
+    .skip(totalNumber - limit)
+    .catch(dbCatch)
   return res.status(201).send({ data: columnOulines.reverse().map((col) => col.getPublic()) })
 })
