@@ -5,6 +5,6 @@ on: [push, pull_request]
 
 jobs:
   example:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      - use: actions/checkout@v2
+      - uses: actions/checkout@v2
