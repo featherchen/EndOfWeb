@@ -1,12 +1,14 @@
 {
   "scripts": {
+    "start": "node index.js",
     "prepare": "husky install",
     "local-install": "yarn install && cd client && yarn install && cd ../backend && yarn install && cd ..",
     "start-server": "nodemon index.js",
     "start-client": "cd client && yarn run local-build && cd ..",
     "dev": "npm-run-all --parallel start-client start-server",
     "build-client": "cd client && yarn build && cd ..",
-    "reset-db": "node ./backend/routes/Schemas/preload.js"
+    "reset-db": "node ./backend/routes/Schemas/preload.js",
+    "heroku-postbuild": "yarn run local-install && yarn build-client"
   },
   "dependencies": {
     "@material-ui/icons": "^4.11.2",
