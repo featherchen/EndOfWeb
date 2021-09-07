@@ -76,7 +76,7 @@ mongoose.connection.on('open', () => {
 });*/
 
   //server on
-  app.listen(process.env.PORT || 1993, () => {
+  app.listen(process.env.PORT || 5000, () => {
     if (process.env.HERO) {
       const { wakeDyno } = require('heroku-keep-awake')
       wakeDyno('https://eeplus-back.herokuapp.com/', {
@@ -84,7 +84,7 @@ mongoose.connection.on('open', () => {
         stopTimes: { start: '16:00', end: '00:00' }, //time zone +0，so -8hr
       })
     }
-    console.log(`Server is up on port ${process.env.PORT || 1993}.`)
+    console.log(`Server is up on port ${process.env.PORT || 5000}.`)
   })
   //https server
   // connect to https://localhost:1993
