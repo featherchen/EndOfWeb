@@ -1,6 +1,6 @@
 import React from 'react'
 import { CContainer, CRow } from '@coreui/react'
-import NTUEEPLUS_image from '../../../../assets/images/NTUEE+ club.png'
+import Welcome from '../../../../assets/images/Welcome.png'
 const About = () => {
   return (
     <div id="about" className="section">
@@ -8,7 +8,7 @@ const About = () => {
         <CRow>
           <div className="col-xs-12 col-md-6">
             {' '}
-            <img src={NTUEEPLUS_image} className="img-responsive" alt="" />{' '}
+            <img src={Welcome} className="img-responsive" alt="" />{' '}
           </div>
           <div className="col-xs-12 col-md-6">
             <div className="about-text">
