@@ -64,8 +64,6 @@ const Profile = () => {
                   <h4>{data.username}</h4>
                   <p className="text-secondary mb-1">{data.profile}</p>
                   <p className="text-muted font-size-sm">{data.CC}</p>
-                  <CButton>Follow</CButton>
-                  <CButton>Message</CButton>
                 </div>
               </div>
             </CCardBody>
@@ -88,7 +86,7 @@ const Profile = () => {
                   </CAvatar>
                   Github
                 </h6>
-                <span className="text-secondary">noidname01</span>
+                <span className="text-secondary">{data.github}</span>
               </CListGroupItem>
               <CListGroupItem>
                 <h6 className="mb-0">
@@ -98,15 +96,6 @@ const Profile = () => {
                   Linkedin
                 </h6>
                 <span className="text-secondary">{data.Linkedin}</span>
-              </CListGroupItem>
-              <CListGroupItem>
-                <h6 className="mb-0">
-                  <CAvatar>
-                    <CIcon name="cib-instagram"></CIcon>
-                  </CAvatar>
-                  Instagram
-                </h6>
-                <span className="text-secondary">bootdey</span>
               </CListGroupItem>
               <CListGroupItem>
                 <h6 className="mb-0">
