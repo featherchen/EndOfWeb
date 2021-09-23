@@ -16,14 +16,14 @@ import {
   CAvatar,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { Link } from 'react-router-dom'
 import ProfileImageEditor from './ProfileImageEditor'
 import axios from 'axios'
 
 const ProfileEdit = () => {
   const dispatch = useDispatch()
-  const { imgSrc } = useSelector(selectLogin)
+  const { imgSrc, studentID } = useSelector(selectLogin)
   const [data, setData] = useState(null)
-
   const getProfile = () => {
     axios
       .get('api/profile')
@@ -196,6 +196,15 @@ const ProfileEdit = () => {
                 <hr />
                 <CRow>
                   <CCol sm="3">
+                    <h6 className="mb-0">Student ID</h6>
+                  </CCol>
+                  <CCol sm="9" className="text-secondary">
+                    <CFormControl style={inputStyle} value={studentID} />
+                  </CCol>
+                </CRow>
+                <hr />
+                <CRow>
+                  <CCol sm="3">
                     <h6 className="mb-0">Email</h6>
                   </CCol>
                   <CCol sm="9" className="text-secondary">
@@ -220,9 +229,6 @@ const ProfileEdit = () => {
                   </CCol>
                 </CRow>
                 <hr />
-                <CRow>
-                  <CButton onClick={handleSave}>Save</CButton>
-                </CRow>
               </CCardBody>
             </CCard>
             <CRow>
@@ -283,7 +289,7 @@ const ProfileEdit = () => {
                     </h6>
                     <hr />
                     <CRow>
-                      <CCol sm="4">
+                      <CCol sm="3">
                         <h6 className="mb-0">Company</h6>
                       </CCol>
                       <CCol sm="9" className="text-secondary">
@@ -296,8 +302,8 @@ const ProfileEdit = () => {
                     </CRow>
                     <hr />
                     <CRow>
-                      <CCol sm="4">
-                        <h6 className="mb-0">Department</h6>
+                      <CCol sm="3">
+                        <h6 className="mb-0">Division</h6>
                       </CCol>
                       <CCol sm="9" className="text-secondary">
                         <CFormControl
@@ -309,7 +315,7 @@ const ProfileEdit = () => {
                     </CRow>
                     <hr />
                     <CRow>
-                      <CCol sm="4">
+                      <CCol sm="3">
                         <h6 className="mb-0">Position</h6>
                       </CCol>
                       <CCol sm="9" className="text-secondary">
@@ -324,6 +330,13 @@ const ProfileEdit = () => {
                   </CCardBody>
                 </CCard>
               </CCol>
+            </CRow>
+            <CRow>
+              <Link to={`/profile/${studentID}`}>
+                <CButton color="info" onClick={handleSave}>
+                  Save
+                </CButton>
+              </Link>
             </CRow>
           </CCol>
         </CRow>

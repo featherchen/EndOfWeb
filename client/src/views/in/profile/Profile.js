@@ -20,7 +20,7 @@ import default_male from '../../../assets/images/default_male.png'
 
 const Profile = () => {
   const id = useParams().id
-  const { imgSrc, studentID } = useSelector(selectLogin)
+  const { studentID } = useSelector(selectLogin)
   const getProfile = () => {
     axios
       .post('api/searchProfile', { account: id })
@@ -123,6 +123,15 @@ const Profile = () => {
               <hr />
               <CRow>
                 <CCol sm="3">
+                  <h6 className="mb-0">Student ID</h6>
+                </CCol>
+                <CCol sm="9" className="text-secondary">
+                  {data.account}
+                </CCol>
+              </CRow>
+              <hr />
+              <CRow>
+                <CCol sm="3">
                   <h6 className="mb-0">Email</h6>
                 </CCol>
                 <CCol sm="9" className="text-secondary">
@@ -139,13 +148,6 @@ const Profile = () => {
                 </CCol>
               </CRow>
               <hr />
-              {studentID === id ? (
-                <CRow>
-                  <Link to="/edit_profile">
-                    <CButton>Edit</CButton>
-                  </Link>
-                </CRow>
-              ) : null}
             </CCardBody>
           </CCard>
           <CRow>
@@ -194,7 +196,7 @@ const Profile = () => {
                   </h6>
                   <hr />
                   <CRow>
-                    <CCol sm="4">
+                    <CCol sm="3">
                       <h6 className="mb-0">Company</h6>
                     </CCol>
                     <CCol sm="9" className="text-secondary">
@@ -203,8 +205,8 @@ const Profile = () => {
                   </CRow>
                   <hr />
                   <CRow>
-                    <CCol sm="4">
-                      <h6 className="mb-0">Department</h6>
+                    <CCol sm="3">
+                      <h6 className="mb-0">Division</h6>
                     </CCol>
                     <CCol sm="9" className="text-secondary">
                       {data.Occupation.length != 0 ? data.Occupation[0].O : ''}
@@ -212,7 +214,7 @@ const Profile = () => {
                   </CRow>
                   <hr />
                   <CRow>
-                    <CCol sm="4">
+                    <CCol sm="3">
                       <h6 className="mb-0">Position</h6>
                     </CCol>
                     <CCol sm="9" className="text-secondary">
@@ -224,6 +226,15 @@ const Profile = () => {
               </CCard>
             </CCol>
           </CRow>
+          {studentID === id ? (
+            <CRow>
+              <Link to="/edit_profile">
+                <CButton size="lg" color="info">
+                  Edit
+                </CButton>
+              </Link>
+            </CRow>
+          ) : null}
         </CCol>
       </CRow>
     </CContainer>
