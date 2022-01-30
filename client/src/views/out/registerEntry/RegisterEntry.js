@@ -65,42 +65,17 @@ const RegisterEntry = () => {
   }
 
   const buttonAccount = (
-    <Link className="d-flex justify-content-center" to="/register">
+    <Link className="d-flex justify-content-center" to="register_entry_student">
       <CImage fluid src={RegisterAccount} alt="Register by Account" />
     </Link>
   )
   const buttonFB = (
-    <div className="d-flex justify-content-center">
-      <FacebookLogin
-        appId={process.env.REACT_APP_fbAPIid || '571174603253755'}
-        autoLoad={false}
-        isMobile={false}
-        fields="name,email,picture"
-        callback={handleFBSubmit}
-        textButton=""
-        render={(renderProps) => (
-          <CImage
-            src={RegisterFB}
-            fluid
-            alt="Register by Facebook"
-            onClick={renderProps.onClick}
-            style={{ cursor: 'pointer' }}
-          />
-        )}
-      />
-    </div>
+    <Link className="d-flex justify-content-center" to="/register_entry_alumni">
+      <CImage fluid src={RegisterFB} alt="Register by FB" />
+    </Link>
   )
   if (isLogin) {
     return <Redirect to="/home" />
-  } else if (needRegister) {
-    return (
-      <Redirect
-        to={{
-          pathname: '/register_fb',
-          state: { facebookID: userId },
-        }}
-      />
-    )
   } else {
     return (
       <div className="min-vh-100 d-flex flex-row align-items-center">
