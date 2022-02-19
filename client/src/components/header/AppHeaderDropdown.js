@@ -57,7 +57,7 @@ const AppHeaderDropdown = () => {
         </CDropdownItem>
 
         <CDropdownItem component={Link} to={`/change_password`}>
-          <CIcon icon="cil-lock-locked" name="cil-user" className="me-2" />
+          <CIcon icon="cil-lock-locked" name="cil-lock-locked" className="me-2" />
           Change Password
         </CDropdownItem>
 
